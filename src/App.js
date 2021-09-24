@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import ListadoPeliculas from "./views/ListadoPeliculas";
+// import Blog from "./views/Blog";
+import {BrowserRouter, Route, Switch} from "react-router-dom"
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://www.xvideos.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Click aquí
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Switch>
+      {/* <Route path="/blog">
+          <Blog/>
+        </Route> */}
+        
+        <Route path="/">
+        <ListadoPeliculas/>
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
 export default App;
