@@ -20,26 +20,17 @@ function ListadoPeliculas() {
   const cantPeliculas = 4;
   let resPeliculas;
 
-  const buscarPeliculas = () => {
+  const buscarPeliculas = async () => {
     // // let url = "https://lucasmoy.dev/data/react/peliculas.json"
     // // let url = "https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/lucasmoy-dev/Curso-de-React/main/Proyecto%202%20-%20Web%20de%20Peliculas/Proyecto%20Terminado/src/peliculas.json"
-    // // let url = "http://localhost:4000/ObtenerPeliculas"
+    let url = "http://localhost:4000/ObtenerPeliculas"
     // // let url = "https://serverless2-dybdpe7ex.vercel.app/api/meals"
 
-    // axios.get('http://localhost:4000/ObtenerPeliculas', {
-    // responseType: 'json'
-    //   })
-    //     .then(function(res) {
-    //       if(res.status==200) {
-    //         console.log(res.data);
-    //         // debugger
-    //       }
-    //       console.log(res);
-    //     })
-    //     .catch(function(err) {
-    //       console.log(err);
-    //       // debugger
-    //     })
+    let request = await fetch(url);
+      resPeliculas = await request.json()
+      console.log(resPeliculas)
+  
+      setPeliculas(resPeliculas);
         
 
   }
