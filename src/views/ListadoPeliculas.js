@@ -2,6 +2,7 @@ import "../App.css";
 import PageWrapper from "./PageWrapper";
 import Paginacion from "./Paginacion";
 import Pelicula from "./Pelicula";
+import axios from "axios";
 // import peliculasJson from "./peliculas.json";
 import { useEffect, useState } from "react";
 
@@ -13,26 +14,33 @@ function ListadoPeliculas() {
 
   useEffect(()=>{
     buscarPeliculas();
+    // console.log("Hola")
   }, []);
 
   const cantPeliculas = 4;
   let resPeliculas;
 
-  const buscarPeliculas = async () => {
-    // let url = "https://lucasmoy.dev/data/react/peliculas.json"
-    let url = "https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/lucasmoy-dev/Curso-de-React/main/Proyecto%202%20-%20Web%20de%20Peliculas/Proyecto%20Terminado/src/peliculas.json"
+  const buscarPeliculas = () => {
+    // // let url = "https://lucasmoy.dev/data/react/peliculas.json"
+    // // let url = "https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/lucasmoy-dev/Curso-de-React/main/Proyecto%202%20-%20Web%20de%20Peliculas/Proyecto%20Terminado/src/peliculas.json"
+    // // let url = "http://localhost:4000/ObtenerPeliculas"
+    // // let url = "https://serverless2-dybdpe7ex.vercel.app/api/meals"
 
-    let request = await fetch(url, {
-    "method": "GET",
-    "headers": {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-      "Origin": "https://raw.githubusercontent.com/"
-    }
-    });
-    resPeliculas = await request.json()
-
-    setPeliculas(resPeliculas);
+    // axios.get('http://localhost:4000/ObtenerPeliculas', {
+    // responseType: 'json'
+    //   })
+    //     .then(function(res) {
+    //       if(res.status==200) {
+    //         console.log(res.data);
+    //         // debugger
+    //       }
+    //       console.log(res);
+    //     })
+    //     .catch(function(err) {
+    //       console.log(err);
+    //       // debugger
+    //     })
+        
 
   }
 
@@ -54,15 +62,12 @@ function ListadoPeliculas() {
 
       {peliculasPorPagina.map((pelicula) => (
         <Pelicula
-          titulo={pelicula.titulo}
-          calificacion={pelicula.calificacion}
+          titulo={pelicula.nombre}
           director={pelicula.director}
-          actores={pelicula.actores}
-          fecha={pelicula.fecha}
-          duracion={pelicula.duracion}
-          img={pelicula.img}
+          img={pelicula.URL_Imagen}
+          genero={pelicula.genero}
         >
-          {pelicula.descripcion}
+          {pelicula.sinopsis}
         </Pelicula>
       ))}
 
