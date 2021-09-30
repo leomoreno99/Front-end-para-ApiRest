@@ -24,7 +24,7 @@ const PageWrapper = (props) => {
                         </div>
                         <a href="index-2.html"><img className="logo" src="images/logo3.png" alt="" width="119" height="58"/></a>
                     </div>
-                    <div className="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+                    <div className="collapse app" id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav flex-child-menu menu-left">
                             <li className="hidden barranav">
                                 <a href="#page-top"></a>
@@ -48,11 +48,15 @@ const PageWrapper = (props) => {
                     </div>
 
             <div className="top-search">
-                <select>
-                    <option value="united">TV show</option>
-                    <option value="saab">Others</option>
-                </select>
-                <input type="text" placeholder="Search for a movie, TV Show or celebrity that you are looking for"/>
+                <form>
+                    <input type="text" placeholder="Buscar película por nombre"></input>
+                    {/* <li className="dropdown first boton-signup barranav">
+                        <a href="/signup" className="btn btn-default dropdown-toggle lv1">Registrarse</a>
+                    </li> */}
+                    <div className="col-md-2">
+                        <input className="submit" type="submit" value="Buscar"></input>
+                    </div>
+                </form>
             </div>
         </div>
     </header>
@@ -63,11 +67,11 @@ const PageWrapper = (props) => {
             <div className="row">
                 <div className="col-md-12">
                     <div className="hero-ct">
-                        <h1> movie listing - list</h1>
-                        <ul className="breadcumb">
+                        <h1> Listado de películas</h1>
+                        {/* <ul className="breadcumb">
                             <li className="active"><a href="#">Home</a></li>
                             <li> <span className="ion-ios-arrow-right"></span> movie listing</li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
             </div>
