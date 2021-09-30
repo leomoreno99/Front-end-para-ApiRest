@@ -8,11 +8,11 @@ import { useEffect, useState } from "react";
 
 function ListadoPeliculas() {
   // let peliculas = peliculasJson;
-  
+
   const [paginaActual, setPaginaActual] = useState(1);
   const [peliculas, setPeliculas] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     buscarPeliculas();
     // console.log("Hola")
   }, []);
@@ -21,36 +21,36 @@ function ListadoPeliculas() {
   let resPeliculas;
 
   const buscarPeliculas = async () => {
-    // // let url = "https://lucasmoy.dev/data/react/peliculas.json"
-    // // let url = "https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/lucasmoy-dev/Curso-de-React/main/Proyecto%202%20-%20Web%20de%20Peliculas/Proyecto%20Terminado/src/peliculas.json"
-    let url = "http://localhost:4000/ObtenerPeliculas"
-    // // let url = "https://serverless2-dybdpe7ex.vercel.app/api/meals"
+    let url = "http://localhost:4000/ObtenerPeliculas";
 
-    let request = await fetch(url);
-      resPeliculas = await request.json()
-      console.log(resPeliculas)
+    const localstorage_user = JSON.parse(localStorage.getItem("token"));
+    // const inMemoryToken = localstorage_user.token;
+    if(localstorage_user) {
+
+      let request = await fetch(url, {
+        method : 'GET',
+        headers : {
+          'Authorization' : localstorage_user
+        }
+      });
+      resPeliculas = await request.json();
   
       setPeliculas(resPeliculas);
-        
+    } else {
+        window.location.href = 'http://localhost:3000/login'
+    }
 
-  }
+  };
 
-  
-
-  
   const getTotalPaginas = () => {
     return Math.ceil(peliculas.length / cantPeliculas);
   };
 
-
-  let pagI = cantPeliculas*(paginaActual-1)
+  let pagI = cantPeliculas * (paginaActual - 1);
   let peliculasPorPagina = peliculas.slice(pagI, pagI + cantPeliculas);
 
   return (
-      
     <PageWrapper>
-      
-
       {peliculasPorPagina.map((pelicula) => (
         <Pelicula
           titulo={pelicula.nombre}

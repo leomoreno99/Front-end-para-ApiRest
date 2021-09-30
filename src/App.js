@@ -1,29 +1,28 @@
 import "./App.css";
 import ListadoPeliculas from "./views/ListadoPeliculas";
 // import Blog from "./views/Blog";
-import {BrowserRouter, Route, Switch} from "react-router-dom"
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./views/Login";
 import SignUp from "./views/SignUp";
 
 function App() {
-  
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/login">
-          <Login/>
+          <Login />
         </Route>
 
         <Route path="/signup">
-          <SignUp/>
+          <SignUp />
         </Route>
         
         <Route path="/">
-        <ListadoPeliculas/>
+          <ListadoPeliculas />
         </Route>
       </Switch>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App;
