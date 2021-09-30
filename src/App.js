@@ -2,15 +2,21 @@ import "./App.css";
 import ListadoPeliculas from "./views/ListadoPeliculas";
 // import Blog from "./views/Blog";
 import {BrowserRouter, Route, Switch} from "react-router-dom"
+import Login from "./views/Login";
+import SignUp from "./views/SignUp";
 
 function App() {
   
   return (
     <BrowserRouter>
       <Switch>
-      {/* <Route path="/blog">
-          <Blog/>
-        </Route> */}
+        <Route path="/login">
+          <Login/>
+        </Route>
+
+        <Route path="/signup">
+          <SignUp/>
+        </Route>
         
         <Route path="/">
         <ListadoPeliculas/>

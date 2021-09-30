@@ -1,0 +1,101 @@
+body{
+    background-color: #020d18;
+    /* border: red solid 1px; */
+    
+}
+
+#app {
+    display: flex;
+    /* width: 400px; */
+    justify-content: center;
+}
+
+#app div{
+    flex-grow: 1;
+    background-color: #0d1a2a;
+    margin: 5px;
+    margin-top: 0px;
+}
+
+#orders {
+    margin-right: 0;
+}
+
+#meals {
+    margin-left: 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#submit {
+    background-color: tomato;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin: 15px;
+    margin-left: 40px;
+}
+
+#submit:disabled {
+    background-color: rgb(252, 165, 150);
+}
+
+#meals-list li {
+    cursor: pointer;
+}
+
+.selected {
+    color: #dd003f;
+}
+
+#app .form-principal {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 15px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    border-radius: 4px;
+}
+
+.acceso-form p {
+    margin-bottom: 5px;
+    font-size: 14px;
+    
+}
+
+form div input {
+    width: calc(100% - 12px);
+    height: 32px;
+    padding-left: 5px;
+    color: #abb7c4 !important;
+    background-color: #233a50 !important;
+    border: none;
+    border-radius: 4px;
+
+}
+
+.form-titulo {
+    color: #dd003f;
+    font-size: x-large;
+    margin: 20px;
+    margin-left: 2px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.boton{
+    background-color: #dd003f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.block {
+    width: calc(100% - 4px);
+}
