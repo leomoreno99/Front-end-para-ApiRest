@@ -1,4 +1,14 @@
+import EditarPelicula from "./EditarPelicula";
+
 const Pelicula = (props) => {
+
+	const enviarEditarPelicula = (imag) =>{ 
+		<EditarPelicula
+		img={imag}
+		/>
+		
+		window.location.href = "/editarpelicula";
+		}
 
     return (
         <div className="movie-item-style-2">
@@ -11,6 +21,9 @@ const Pelicula = (props) => {
 						<p>Director: <a href="#">{props.director}</a></p>
 						<p>GeneroSt: <a href="#">{props.genero}</a></p>
 					</div>
+					<div className="col-md-2">
+                        <input onClick={()=>{enviarEditarPelicula(props.img)}} className="submit" type="submit" value="Editar"></input>
+                    </div>
 				</div>
     )
 
