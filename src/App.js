@@ -4,6 +4,7 @@ import ListadoPeliculas from "./views/ListadoPeliculas";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./views/Login";
 import SignUp from "./views/SignUp";
+import EditarPelicula from "./views/EditarPelicula";
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
 
         <Route path="/signup">
           <SignUp />
+        </Route>
+
+        <Route path="/editarpelicula">
+          <EditarPelicula/>
         </Route>
         
         <Route path="/">
