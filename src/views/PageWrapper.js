@@ -1,4 +1,24 @@
+import { useEffect, useState } from "react";
+
+
 const PageWrapper = (props) => {
+
+  const [peliBuscar, setPeliBuscar] = useState('')
+
+  const onChangeBusqueda = (event) => {
+      setPeliBuscar(event.target.value);
+  }
+
+  const enviarNombre = () => {
+    localStorage.setItem("nombrePelicula", JSON.stringify(peliBuscar));
+    window.location.href = "http://localhost:3000/filtrarpeliculas";
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+  
+
   return (
     <div>
       
@@ -38,6 +58,11 @@ const PageWrapper = (props) => {
                   Inicio
                 </a>
               </li>
+              <li className="dropdown first barranav">
+                <a href="/agregarpelicula" className="btn btn-default dropdown-toggle lv1">
+                  Agregar Pelicula
+                </a>
+              </li>
             </ul>
 
             <ul className="nav navbar-nav flex-child-menu menu-right">
@@ -62,8 +87,9 @@ const PageWrapper = (props) => {
           </div>
 
           <div className="top-search">
-            <form>
+            <form onSubmit={handleSubmit}>
               <input
+                onChange={onChangeBusqueda}
                 type="text"
                 placeholder="Buscar película por nombre"
               ></input>
@@ -71,7 +97,7 @@ const PageWrapper = (props) => {
                         <a href="/signup" className="btn btn-default dropdown-toggle lv1">Registrarse</a>
                     </li> */}
               <div className="col-md-2">
-                <input className="submit" type="submit" value="Buscar"></input>
+                <input onClick={enviarNombre} className="submit" type="submit" value="Buscar"></input>
               </div>
             </form>
           </div>

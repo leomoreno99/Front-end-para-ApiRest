@@ -4,7 +4,9 @@ import ListadoPeliculas from "./views/ListadoPeliculas";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./views/Login";
 import SignUp from "./views/SignUp";
-import EditarPelicula from "./views/EditarPelicula";
+import FormEditarPelicula from "./views/FormEditarPelicula";
+import AgregarPelicula from "./views/AgregarPelicula";
+import FiltrarPelicula from "./views/FiltrarPeliculas";
 
 function App() {
   return (
@@ -19,9 +21,17 @@ function App() {
         </Route>
 
         <Route path="/editarpelicula">
-          <EditarPelicula/>
+          <FormEditarPelicula/>
+        </Route>
+
+        <Route path="/agregarpelicula">
+          <AgregarPelicula/>
         </Route>
         
+        <Route path="/filtrarpeliculas">
+          <FiltrarPelicula/>
+        </Route>
+
         <Route path="/">
           <ListadoPeliculas />
         </Route>

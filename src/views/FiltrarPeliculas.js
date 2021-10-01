@@ -6,7 +6,7 @@ import axios from "axios";
 // import peliculasJson from "./peliculas.json";
 import { useEffect, useState } from "react";
 
-function ListadoPeliculas() {
+function FiltrarPeliculas() {
   // let peliculas = peliculasJson;
 
   const [paginaActual, setPaginaActual] = useState(1);
@@ -21,8 +21,9 @@ function ListadoPeliculas() {
   let resPeliculas;
 
   const buscarPeliculas = async () => {
-    let url = "http://localhost:4000/ObtenerPeliculas";
-
+    let nombre = JSON.parse(localStorage.getItem("nombrePelicula"));
+    let url = `http://localhost:4000/obtenerPeliculaPorNombre/${nombre}`;
+    // debugger
     const localstorage_user = JSON.parse(localStorage.getItem("token"));
     // const inMemoryToken = localstorage_user.token;
     if(localstorage_user) {
@@ -76,4 +77,4 @@ function ListadoPeliculas() {
   );
 }
 
-export default ListadoPeliculas;
+export default FiltrarPeliculas;

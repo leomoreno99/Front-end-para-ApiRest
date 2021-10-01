@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 
 
-const EditarPelicula = (props) => {
+const AgregarPelicula = (props) => {
 
     const [nombre, setNombre]     = useState('');
     const [imgUrl, setImgUrl]     = useState('');
@@ -10,53 +10,21 @@ const EditarPelicula = (props) => {
     const [sinopsis, setSinopsis] = useState('');
     const [director, setDirector] = useState('');
 
-    let localstorage_pelicula = localStorage.getItem("idpelicula");
-    let localstorage_token    = JSON.parse(localStorage.getItem("token"));
-    const obtenerPelicula = async () => {
-
-        let url                 = `http://localhost:4000/obtenerPeliculaPorId/${localstorage_pelicula}`;
-        let request             = await fetch(url, {
-            method  : "GET",
-            headers : {
-                'Authorization' : localstorage_token
-            }
-        });
-        
-        if (request.status === 200) {
-            const pelicula =  await request.json();
-            pelicula.map(peli => {
-                setNombre(peli.nombre);
-                setGenero(peli.genero);
-                setSinopsis(peli.sinopsis);
-                setDirector(peli.director);
-                setImgUrl(peli.URL_Imagen);
-            })
-            // debugger
-
-        } else {
-            console.log("Error al obtener pelicula");
-        }
-    }
-
-    useEffect(() => {
-        obtenerPelicula();
-        // console.log("Hola")
-      }, []);
-
-      const divStyle = {
+    let localstorage_token = JSON.parse(localStorage.getItem("token"));
+    
+    const divStyle = {
         height: '528px'
-      };
+    };
 
-      const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-      };
+    };
 
-      const editarPelicula = async () => {
-        alert(localstorage_pelicula)
-        let url = `http://localhost:4000/editarPelicula/${localstorage_pelicula}`;
+    const editarPelicula = async () => {
+        let url = `http://localhost:4000/agregarPelicula`;
 
         let request = await fetch(url, {
-        method       : "PUT",
+        method       : "POST",
         headers      : {
             'Authorization' : localstorage_token
         },
@@ -70,13 +38,13 @@ const EditarPelicula = (props) => {
         });
 
         //  debugger
-        if (request.status === 200) {
+        if (request.status === 201) {
             let response     = await request.json();
             alert(response)
             window.location.href = "http://localhost:3000/";
             
         } else {
-        alert("Error al editar la pelicula")
+            alert("Error al agregar la pelicula")
         }
       }
 
@@ -84,7 +52,7 @@ const EditarPelicula = (props) => {
           setNombre(event.target.value);
       }
 
-      const onChangeimgUrl = (event) => {
+      const onChangeImgUrl = (event) => {
           setImgUrl(event.target.value);
       }
 
@@ -115,29 +83,35 @@ const EditarPelicula = (props) => {
             <div className="col-md-9 col-sm-12 col-xs-12">
                 <div className="form-style-1 user-pro" action="#">
                             <form onSubmit={handleSubmit} className="password">
-                                <h4>Editar película</h4>
+                                <h4>Agregar película</h4>
                                 <div className="row">
                                     <div className="col-md-6 form-it">
                                         <label>Titulo</label>
-                                        <input type="text" value={nombre} onChange={onChangeNombre}></input>
+                                        <input type="text"  onChange={onChangeNombre}></input>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-md-6 form-it">
                                         <label>Descripcion</label>
-                                        <input type="text" value={sinopsis} onChange={onChangeSinopsis}></input>
+                                        <input type="text" onChange={onChangeSinopsis}></input>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-md-6 form-it">
                                         <label>Director</label>
-                                        <input type="text" value={director} onChange={onChangeDirector}></input>
+                                        <input type="text" onChange={onChangeDirector}></input>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-md-6 form-it">
                                         <label>Genero</label>
-                                        <input type="text" value={genero} onChange={onChangeGenero}></input>
+                                        <input type="text" onChange={onChangeGenero}></input>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-6 form-it">
+                                        <label>Imagen de la portada</label>
+                                        <input type="text" onChange={onChangeImgUrl}></input>
                                     </div>
                                 </div>
                                 
@@ -157,4 +131,4 @@ const EditarPelicula = (props) => {
     )
 }
 
-export default EditarPelicula;
+export default AgregarPelicula;

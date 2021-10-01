@@ -5,25 +5,30 @@ const Login = (props) => {
   const [contrasenia, setContrasenia] = useState("");
 
   const buscarToken = async () => {
-    let url = "http://localhost:4000/loginUsuario";
+        let url = "http://localhost:4000/loginUsuario";
 
-    let request = await fetch(url, {
-      method       : "POST",
-      body: new URLSearchParams({
-        usuario    : usuario,
-        contraseña : contrasenia,
-      }),
-    });
+        let request = await fetch(url, {
+          method       : "POST",
+          body: new URLSearchParams({
+              usuario    : usuario,
+              contraseña : contrasenia,
+          }),
+        });
 
-    if (request.status !== 404) {
-      let resTokenJson     = await request.json();
-      localStorage.setItem("token", JSON.stringify(resTokenJson.token));
-      window.location.href = "http://localhost:3000/";
-
-    } else {
-      console.log("Usuario no encontrado");
-    }
-  };
+        //  debugger
+        if (request.status !== 404) {
+        let resTokenJson     = await request.json();
+        // debugger
+        // let resTokenJson     = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNTVlYmRiYmUyMDQ3MjMzZGE3OTgyMiIsImlhdCI6MTYzMzAyNzI0OSwiZXhwIjoxNjMzMDMwODQ5fQ.lPr9dTLpY8ETkVxVOquQL3J_tl3crlGuwPqhjHWCJLY";
+        localStorage.setItem("token", JSON.stringify(resTokenJson.token));
+        // localStorage.setItem("token", JSON.stringify(resTokenJson));
+        window.location.href = "http://localhost:3000/";
+            
+        } else {
+        console.log("Usuario no encontrado");
+        }
+        
+    };
 
   const handleSubmit = (e) => {
     e.preventDefault();
