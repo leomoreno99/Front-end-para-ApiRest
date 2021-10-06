@@ -52,7 +52,7 @@ const EditarPelicula = (props) => {
       };
 
       const editarPelicula = async () => {
-        alert(localstorage_pelicula)
+        // alert(localstorage_pelicula)
         let url = `http://localhost:4000/editarPelicula/${localstorage_pelicula}`;
 
         let request = await fetch(url, {

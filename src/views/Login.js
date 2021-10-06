@@ -30,6 +30,10 @@ const Login = (props) => {
         
     };
 
+  const irSignup = () => {
+    window.location.href = "http://localhost:3000/signup";
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -42,6 +46,10 @@ const Login = (props) => {
 
   const onChangeContrasenia = (event) => {
     setContrasenia(event.target.value);
+  };
+
+  const divStyle = {
+    'margin-bottom': '10px'
   };
 
   return (
@@ -70,7 +78,14 @@ const Login = (props) => {
                     onClick={buscarToken}
                     className="submit"
                     type="submit"
+                    style={divStyle}
                     value="Iniciar sesión"
+                  ></input>
+                  <input
+                    onClick={irSignup}
+                    type="submit"
+                    className="submit"
+                    value="Crear usuario"
                   ></input>
                 </div>
               </div>

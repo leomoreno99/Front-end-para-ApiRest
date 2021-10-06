@@ -40,6 +40,9 @@ const SignUp = (props) => {
     }
   }
 
+  const irLogin = () => {
+    window.location.href = "http://localhost:3000/login";
+  }
     
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,6 +60,9 @@ const SignUp = (props) => {
     setContrasenia2(event.target.value);
   }
 
+  const divStyle = {
+    'margin-bottom': '10px',
+  };
 
   return (
     <div className="page-single container">
@@ -89,8 +95,15 @@ const SignUp = (props) => {
                   <input
                     onClick={crearUsuario}
                     className="submit"
+                    style={divStyle}
                     type="submit"
                     value="Crear usuario"
+                  ></input>
+                  <input
+                    onClick={irLogin}
+                    type="submit"
+                    className="submit"
+                    value="Iniciar Sesión"
                   ></input>
                 </div>
               </div>
