@@ -5,7 +5,7 @@ Para poder ejecutar el sistema debemos tener instalado Node Js y luego instalar 
 ### `npm install`
 
 
-Luego para iniciarlo en una terminal ingresamos el comando: 
+Luego para iniciarlo, en una terminal ingresamos el comando: 
 ### `npm start`
 
-Por ultimo, para que fuincione la aplicación debemos descargar el backend que se encuentra en el siguiente link: https://github.com/samubus19/ApiRest-Node-Mongo-Docker
+Por ultimo, para que funcione la aplicación debemos descargar el backend que se encuentra en el siguiente link: https://github.com/samubus19/ApiRest-Node-Mongo-Docker
